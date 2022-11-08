@@ -1,7 +1,7 @@
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
-import { ICreateAddressDTO } from "../dtos/ICreateAddressDTO";
-import { IAdressesRepository } from "../repositories/IAdressesRepository";
+import { ICreateAddressDTO } from "../../dtos/ICreateAddressDTO";
+import { IAdressesRepository } from "../../repositories/IAdressesRepository";
 
 @injectable()
 class CreateAddressUseCase {
@@ -16,6 +16,8 @@ class CreateAddressUseCase {
         if (addressAlreadyExists) {
             throw new AppError("Address already exists");
         }
+
+        console.log(name);
 
         await this.adressesRepository.create({
             name,

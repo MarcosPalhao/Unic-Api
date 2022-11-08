@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateOutdoors1667829740014 implements MigrationInterface {
+export class CreateRentsInvoices1667913612785 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "outdoors",
+                name: "rents_invoices",
                 columns: [
                     {
                         name: "id",
@@ -14,15 +14,20 @@ export class CreateOutdoors1667829740014 implements MigrationInterface {
                     },
                     {
                         name: "address_id",
-                        type: "uuid",
+                        type: "uuid"
                     },
                     {
-                        name: "reference", 
-                        type: "varchar"
+                        name: "value",
+                        type: "numeric"
                     },
                     {
-                        name: "measure",
-                        type: "varchar"
+                        name: "due_at",
+                        type: "timestamp"
+                    },
+                    {
+                        name: "pay_date",
+                        type: "timestamp",
+                        isNullable: true
                     },
                     {
                         name: "status",
@@ -30,13 +35,9 @@ export class CreateOutdoors1667829740014 implements MigrationInterface {
                         default: "1"
                     },
                     {
-                        name: "cover",
+                        name: "description",
                         type: "varchar",
                         isNullable: true
-                    },
-                    {
-                        name: "iframe_maps",
-                        type: "varchar"
                     },
                     {
                         name: "created_at",
@@ -51,7 +52,7 @@ export class CreateOutdoors1667829740014 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "FKAddressOutdoor",
+                        name: "FKAddressRentals",
                         referencedTableName: "address",
                         referencedColumnNames: ["id"],
                         columnNames: ["address_id"],
@@ -64,6 +65,7 @@ export class CreateOutdoors1667829740014 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("outdoors");
+        await queryRunner.dropTable("rents_invoices")
     }
+
 }

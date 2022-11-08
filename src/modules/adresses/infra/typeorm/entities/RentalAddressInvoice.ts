@@ -1,9 +1,9 @@
-import { Address } from "@modules/adresses/infra/typeorm/entities/Address";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Address } from "./Address";
 import { v4 as uuidv4 } from "uuid";
 
-@Entity("outdoors")
-class Outdoor {
+@Entity("rents_invoices")
+class RentalAddressInvoice {
     @PrimaryColumn()
     id: string;
 
@@ -15,19 +15,19 @@ class Outdoor {
     address_id: string;
 
     @Column()
-    reference: string;
+    value: number;
 
     @Column()
-    measure: string;
+    due_at: Date;
+
+    @Column()
+    pay_date: Date;
 
     @Column()
     status: number;
 
     @Column()
-    cover: string;
-
-    @Column()
-    iframe_maps: string;
+    description: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -42,4 +42,4 @@ class Outdoor {
     }
 }
 
-export { Outdoor };
+export { RentalAddressInvoice };
