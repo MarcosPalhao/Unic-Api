@@ -31,6 +31,27 @@ class OutdoorsRepository implements IOutdoorsRepository {
 
         await this.repository.save(outdoor);
     }
+
+    async findAvailableOutdoor(id: string): Promise<Outdoor> {
+        const outdoorAvailable = await this.repository.findOne({
+            where: {
+                id: id,
+                status: "1"
+            }
+        });
+
+        return outdoorAvailable;
+    }
+
+    async updateAvailable(id: string, status: 2): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({status})
+            .where("id = :id")
+            .setParameters({id})
+            .execute();
+    }
 }
 
 export { OutdoorsRepository };

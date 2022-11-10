@@ -1,8 +1,8 @@
 import { IAdressesRepository } from "@modules/adresses/repositories/IAdressesRepository";
+import { ICreateOutdoorDTO } from "@modules/outdoors/dtos/ICreateOutdoorDTO";
+import { IOutdoorsRepository } from "@modules/outdoors/repositories/IOutdoorsRepository";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
-import { ICreateOutdoorDTO } from "../dtos/ICreateOutdoorDTO";
-import { IOutdoorsRepository } from "../repositories/IOutdoorsRepository";
 
 // interface IRequest {
 //     address_id: string;
