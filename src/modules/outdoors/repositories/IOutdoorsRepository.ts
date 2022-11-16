@@ -4,7 +4,8 @@ import { Outdoor } from "../infra/entities/Outdoor";
 interface IOutdoorsRepository {
     create(data: ICreateOutdoorDTO): Promise<void>;
     findAvailableOutdoor(id: string): Promise<Outdoor>;
-    updateAvailable(id: string, status: 2): Promise<void>
+    updateAvailable(id: string, status: 2): Promise<void>;
+    findById(id: string): Promise<Outdoor>;
 }
 
 export { IOutdoorsRepository };

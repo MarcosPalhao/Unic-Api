@@ -12,6 +12,8 @@ import { IRentalsAdressesRepository } from "@modules/adresses/repositories/IRent
 import { RentalsAdressesRepository } from "@modules/adresses/infra/typeorm/repositories/RentalsAdressesRepository";
 import { IHiredOutdoorsRepository } from "@modules/outdoors/repositories/IHiredOutdoorsRepository";
 import { HiredOutdoorsRepository } from "@modules/outdoors/infra/repositories/HiredOutdoorsRepository";
+import { IOutdoorsInvoicesRepository } from "@modules/outdoors/repositories/IOutdoorsInvoicesRepository";
+import { OutdoorInvoiceRepository } from "@modules/outdoors/infra/repositories/OutdoorInvoiceRepository";
 
 container.registerSingleton<IUsersRepository>(
     "UsersRepository",
@@ -41,4 +43,9 @@ container.registerSingleton<IRentalsAdressesRepository>(
 container.registerSingleton<IHiredOutdoorsRepository>(
     "HiredOutdoorsRepository",
     HiredOutdoorsRepository
+);
+
+container.registerSingleton<IOutdoorsInvoicesRepository>(
+    "OutdoorsInvoicesRepository",
+    OutdoorInvoiceRepository
 );

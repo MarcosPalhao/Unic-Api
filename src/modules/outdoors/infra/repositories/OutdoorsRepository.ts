@@ -52,6 +52,11 @@ class OutdoorsRepository implements IOutdoorsRepository {
             .setParameters({id})
             .execute();
     }
+
+    async findById(id: string): Promise<Outdoor> {
+        const outdoor = await this.repository.findOne(id);
+        return outdoor;
+    }
 }
 
 export { OutdoorsRepository };
